@@ -9,8 +9,29 @@ def prompt_for_word():
 	"""
 	Prompts user for word and returns it.
 	"""
-	word = getpass.getpass(prompt="Word to hide: ")
+	valid = False
+	while not valid:
+		word = getpass.getpass(prompt="Word to hide: ")
+		valid = word_validation(word)
 	return word
+
+def word_validation(word):
+	"""
+	Validates the word for having
+	only allowed characters.
+	"""
+	allowed_chars = []
+	for i in range(97, 123): # generates alphabet
+		allowed_chars.append(chr(i))
+		
+	valid = False
+	for char in word:
+		if char not in allowed_chars:
+			valid = False
+			return valid
+		else:
+			valid = True
+	return valid
 
 def hide_word(word):
 	"""
@@ -77,6 +98,12 @@ def failure_counter(positions, counter):
 		return counter
 	else:
 		return counter
+
+def hangman_printout():
+	"""
+	With every call yields a part of hanged man.
+	"""
+	pass
 
 def game_over(hidden_word, counter):
 	"""
