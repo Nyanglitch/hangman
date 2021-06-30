@@ -60,6 +60,17 @@ def letter_input():
 	letter = input("Letter guess: ")
 	return letter
 
+def asked_letter_validation(letter, larray):
+	'''
+	Takes in a letter and a letter array.
+	Returns true if the letter is present
+	in the array, false if not.
+	'''
+	if letter in larray:
+		return True
+	else:
+		return False
+
 def letter_lookup(word, letter):
 	"""
 	Takes in a letter and a word and seeks it in the word.
@@ -116,12 +127,12 @@ def game_over(hidden_word, counter):
 
 	if counter == 0:
 		gameover = True
-		print("Counter reached zero, you've been hanged.")
+		# print("Counter reached zero, you've been hanged.")
 		return gameover
 
 	for dash in hidden_word:
 		if dash == "_":
-			print("Word isn't fully uncovered.")
+			# print("Word isn't fully uncovered.")
 			gameover = False
 			return gameover
 		else:
